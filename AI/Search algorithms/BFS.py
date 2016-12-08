@@ -27,6 +27,27 @@ def BFS(start, end, nodes):
 
     return None
 
+# untested
+def DFS(start, end, nodes):
+    que = list()
+    visited = dict()
+
+    visited[start] = None
+    que.append(start)
+
+    while not len(que) == 0:
+        square = que.pop()
+
+        if square == end:
+            return visited
+
+        for neigh in neighbours(nodes, square):
+            if neigh not in visited:
+                visited[neigh] = square
+                que.append(neigh)
+
+    return None
+
 def construct_path(visited, end):
     path = list()
     path.append(end)
